@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="XQ Spa - Dịch vụ massage, chăm sóc da mặt, xông hơi tại TP.HCM và Hà Nội. Thư giãn trọn vẹn - Tái tạo năng lượng">
+    <meta name="keywords" content="spa, massage, chăm sóc sức khỏe, thư giãn, xông hơi">
+    <meta name="author" content="XQ Spa">
+    <title>XQ Spa - Trải Nghiệm Thư Giãn & Chăm Sóc Sức Khỏe</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #7b2cbf;
+            --secondary-color: #9d4edd;
+            --accent-color: #e0aaff;
+            --bg-light: #f8f9fa;
+            --text-dark: #212529;
+            --success-color: #25d366;
+            --info-color: #4285f4;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Animations */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+            50% { box-shadow: 0 8px 20px rgba(123, 44, 191, 0.2); }
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            animation: slideInDown 0.8s ease;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Sticky Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Quick Navigation Links */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: -25px 0 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: white;
+            color: var(--primary-color);
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin: 40px 0 25px 0;
+            color: var(--primary-color);
+            position: relative;
+            font-size: 1.8rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 8px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Promotion Banner */
+        .promo-banner {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            animation: glow 2s ease infinite;
+        }
+
+        .promo-banner h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .promo-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.3);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(123, 44, 191, 0.2);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .price {
+            font-size: 1.2rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .btn-book {
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-book:hover {
+            background: var(--secondary-color);
+            transform: scale(1.02);
+        }
+
+        /* Pricing Table */
+        .pricing-table {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .pricing-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .pricing-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .pricing-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .pricing-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* Branch Locations Grid */
+        .branch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .branch-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary-color);
+            animation: fadeInUp 0.8s ease;
+            transition: all 0.3s ease;
+        }
+
+        .branch-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(123, 44, 191, 0.2);
+        }
+
+        .branch-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .branch-info {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .branch-info i {
+            color: var(--secondary-color);
+            margin-top: 5px;
+            min-width: 20px;
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-call {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .btn-map {
+            background-color: var(--info-color);
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        /* Reviews Section */
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .review-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .rating {
+            color: #ffc107;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .review-card p {
+            font-style: italic;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+
+        .reviewer-name {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Form Styles */
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            max-width: 600px;
+            margin: 20px auto;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(123, 44, 191, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(123, 44, 191, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        .social-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            animation: slideInDown 0.3s ease;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: var(--primary-color);
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: none;
+            border-left: 4px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-links" style="margin: 0; padding: 15px 0; justify-content: center; background: white;">
+        <a href="#services" class="nav-btn" style="margin: 0;"><i class="fas fa-spa"></i> Dịch Vụ</a>
+        <a href="#pricing" class="nav-btn" style="margin: 0;"><i class="fas fa-tag"></i> Giá Cả</a>
+        <a href="#branches" class="nav-btn" style="margin: 0;"><i class="fas fa-map-marker-alt"></i> Chi Nhánh</a>
+        <a href="#reviews" class="nav-btn" style="margin: 0;"><i class="fas fa-star"></i> Đánh Giá</a>
+        <a href="#contact" class="nav-btn" style="margin: 0;"><i class="fas fa-envelope"></i> Liên Hệ</a>
+    </nav>
+
+    <header>
+        <h1><i class="fas fa-spa"></i> XQ SPA</h1>
+        <p>Thư Giãn Trọn Vẹn - Tái Tạo Năng Lượng</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Promotion Banner -->
+        <div class="promo-banner">
+            <h3>🎉 KHUYẾN MÃI ĐẶC BIỆT</h3>
+            <p>Giảm giá 20% cho khách hàng mới + Tặng 1 liệu trình xông hơi</p>
+            <div class="promo-badge">Áp dụng đến hết tháng 9/2026</div>
+        </div>
+
+        <!-- Services Section -->
+        <h2 id="services" class="section-title">📋 MENU DỊCH VỤ</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-hands"></i>
+                <h3>Massage Body Thư Giãn</h3>
+                <p>Kết hợp kỹ thuật bấm huyệt và tinh dầu thiên nhiên giúp giảm căng thẳng và lưu thông khí huyết.</p>
+                <div class="price">💰 500.000đ / 60 phút</div>
+                <button class="btn-book" onclick="openBookingModal('Massage Body Thư Giãn')">Đặt Lịch Ngay</button>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-shower"></i>
+                <h3>Gội Đầu Dưỡng Sinh</h3>
+                <p>Chăm sóc tóc và da đầu bằng thảo dược, kết hợp massage cổ vai gáy giải tỏa mệt mỏi.</p>
+                <div class="price">💰 350.000đ / 45 phút</div>
+                <button class="btn-book" onclick="openBookingModal('Gội Đầu Dưỡng Sinh')">Đặt Lịch Ngay</button>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-magic"></i>
+                <h3>Chăm Sóc Da Mặt</h3>
+                <p>Liệu trình chuyên sâu làm sạch, dưỡng ẩm và trẻ hóa làn da an toàn, hiệu quả.</p>
+                <div class="price">💰 450.000đ / 60 phút</div>
+                <button class="btn-book" onclick="openBookingModal('Chăm Sóc Da Mặt')">Đặt Lịch Ngay</button>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-hot-tub"></i>
+                <h3>Xông Hơi Thảo Dược</h3>
+                <p>Thải độc cơ thể, cải thiện tuần hoàn máu và đem lại cảm giác sảng khoái nhẹ nhàng.</p>
+                <div class="price">💰 300.000đ / 30 phút</div>
+                <button class="btn-book" onclick="openBookingModal('Xông Hơi Thảo Dược')">Đặt Lịch Ngay</button>
+            </div>
+        </div>
+
+        <!-- Pricing Section -->
+        <h2 id="pricing" class="section-title">💳 BẢNG GIÁ DỊCH VỤ</h2>
+        <div class="pricing-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dịch Vụ</th>
+                        <th>Thời Gian</th>
+                        <th>Giá (VND)</th>
+                        <th>Khuyến Mãi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Massage Body Thư Giãn</td>
+                        <td>60 phút</td>
+                        <td>500.000</td>
+                        <td>-20%: 400.000</td>
+                    </tr>
+                    <tr>
+                        <td>Gội Đầu Dưỡng Sinh</td>
+                        <td>45 phút</td>
+                        <td>350.000</td>
+                        <td>-20%: 280.000</td>
+                    </tr>
+                    <tr>
+                        <td>Chăm Sóc Da Mặt</td>
+                        <td>60 phút</td>
+                        <td>450.000</td>
+                        <td>-20%: 360.000</td>
+                    </tr>
+                    <tr>
+                        <td>Xông Hơi Thảo Dược</td>
+                        <td>30 phút</td>
+                        <td>300.000</td>
+                        <td>-20%: 240.000</td>
+                    </tr>
+                    <tr>
+                        <td>Gói Combo (Tất cả dịch vụ)</td>
+                        <td>180 phút</td>
+                        <td>1.500.000</td>
+                        <td>-25%: 1.125.000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Reviews Section -->
+        <h2 id="reviews" class="section-title">⭐ ĐÁNH GIÁ CỦA KHÁCH HÀNG</h2>
+        <div class="reviews-container">
+            <div class="review-card">
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+                <p>"Dịch vụ tuyệt vời, nhân viên thân thiện và chuyên nghiệp. Tôi sẽ quay lại!"</p>
+                <div class="reviewer-name">👤 Nguyễn Thu Hà</div>
+            </div>
+            <div class="review-card">
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+                <p>"Không gian spa sạch sẽ, yên tĩnh. Sau liệu trình massage, cảm thấy hoàn toàn thư giãn."</p>
+                <div class="reviewer-name">👤 Phạm Minh Đức</div>
+            </div>
+            <div class="review-card">
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+                <p>"Giá cả hợp lý, chất lượng dịch vụ cao. Các nhân viên rất tỉnh tường và chu đáo."</p>
+                <div class="reviewer-name">👤 Trần Linh Chi</div>
+            </div>
+            <div class="review-card">
+                <div class="rating">⭐⭐⭐⭐</div>
+                <p>"Massage rất tuyệt vời, giảm được đau lưng. Sẽ tiếp tục ghé thăm."</p>
+                <div class="reviewer-name">👤 Lê Văn Kiên</div>
+            </div>
+            <div class="review-card">
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+                <p>"Trải nghiệm tuyệt đối! Từ khi đến spa cho đến khi ra về đều được chăm sóc chu đáo."</p>
+                <div class="reviewer-name">👤 Đỗ Thanh Tâm</div>
+            </div>
+            <div class="review-card">
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+                <p>"XQ Spa là nơi tôi tin tưởng để thư giãn và chăm sóc sức khỏe. Sẽ giới thiệu cho bạn bè!"</p>
+                <div class="reviewer-name">👤 Hoàng Huy Tú</div>
+            </div>
+        </div>
+
+        <!-- Branches Section -->
+        <h2 id="branches" class="section-title">📍 HỆ THỐNG CHI NHÁNH</h2>
+        <div class="branch-grid">
+            
+            <div class="branch-card">
+                <h3>🏢 XQ Spa - Cơ Sở 1</h3>
+                <div class="branch-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>123 Đường Nguyễn Trãi, Phường Bến Thành, Quận 1, TP. Hồ Chí Minh</span>
+                </div>
+                <div class="branch-info">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>0901 234 567</span>
+                </div>
+                <div class="branch-info">
+                    <i class="fas fa-clock"></i>
+                    <span>9:00 - 21:00 (Thứ 2 - Chủ Nhật)</span>
+                </div>
+                <div class="action-btns">
+                    <a href="tel:0901234567" class="btn btn-call"><i class="fas fa-phone"></i> Gọi Ngay</a>
+                    <a href="https://maps.google.com/?q=123+Nguyen+Trai+Quan+1" target="_blank" class="btn btn-map"><i class="fas fa-directions"></i> Chỉ Đường</a>
+                </div>
+            </div>
+
+            <div class="branch-card">
+                <h3>🏢 XQ Spa - Cơ Sở 2</h3>
+                <div class="branch-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>456 Đường Cầu Giấy, Phường Quan Hoa, Quận Cầu Giấy, Hà Nội</span>
+                </div>
+                <div class="branch-info">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>0908 765 432</span>
+                </div>
+                <div class="branch-info">
+                    <i class="fas fa-clock"></i>
+                    <span>9:00 - 21:00 (Thứ 2 - Chủ Nhật)</span>
+                </div>
+                <div class="action-btns">
+                    <a href="tel:0908765432" class="btn btn-call"><i class="fas fa-phone"></i> Gọi Ngay</a>
+                    <a href="https://maps.google.com/?q=456+Cau+Giay+Ha+Noi" target="_blank" class="btn btn-map"><i class="fas fa-directions"></i> Chỉ Đường</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Contact Form -->
+        <h2 id="contact" class="section-title">📞 LIÊN HỆ CHÚNG TÔI</h2>
+        <div class="form-container">
+            <div class="success-message" id="successMessage">
+                ✅ Cảm ơn bạn! Chúng tôi sẽ liên hệ lại trong 24 giờ.
+            </div>
+            <form onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="name">Họ và Tên *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Số Điện Thoại *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Tiêu Đề *</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Nội Dung *</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Gửi Liên Hệ</button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBookingModal()">&times;</span>
+            <h2 style="color: var(--primary-color); margin-bottom: 20px;">Đặt Lịch Hẹn</h2>
+            <div class="success-message" id="bookingSuccess" style="display: none;">
+                ✅ Đặt lịch thành công! Chúng tôi sẽ liên hệ xác nhận sớm nhất.
+            </div>
+            <form onsubmit="submitBooking(event)">
+                <div class="form-group">
+                    <label for="bookingService">Dịch Vụ *</label>
+                    <input type="text" id="bookingService" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="bookingName">Họ và Tên *</label>
+                    <input type="text" id="bookingName" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingPhone">Số Điện Thoại *</label>
+                    <input type="tel" id="bookingPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingDate">Ngày Hẹn *</label>
+                    <input type="date" id="bookingDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingTime">Giờ Hẹn *</label>
+                    <input type="time" id="bookingTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingBranch">Chi Nhánh *</label>
+                    <select id="bookingBranch" required>
+                        <option value="">Chọn chi nhánh</option>
+                        <option value="Cơ Sở 1 - TP.HCM">Cơ Sở 1 - TP.HCM</option>
+                        <option value="Cơ Sở 2 - Hà Nội">Cơ Sở 2 - Hà Nội</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit">Xác Nhận Đặt Lịch</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <h3 style="margin-bottom: 15px;">XQ SPA</h3>
+        <p>Địa chỉ: 123 Đường Nguyễn Trãi, Phường Bến Thành, Quận 1, TP. Hồ Chí Minh</p>
+        <p>Hotline: <strong>0901 234 567</strong> | Email: <strong>info@xqspa.com</strong></p>
+        <div class="social-links">
+            <a href="https://facebook.com/xqspa" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com/xqspa" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com/@xqspa" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://zalo.me/xqspa" target="_blank"><i class="fas fa-mobile-alt"></i></a>
+        </div>
+        <p style="margin-top: 20px;">&copy; 2026 XQ Spa. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+    <script>
+        // Booking Modal Functions
+        function openBookingModal(serviceName) {
+            const modal = document.getElementById('bookingModal');
+            document.getElementById('bookingService').value = serviceName;
+            modal.style.display = 'block';
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.style.display = 'none';
+            document.getElementById('bookingSuccess').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('bookingModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Form Submission
+        function submitForm(event) {
+            event.preventDefault();
+            const form = event.target;
+            
+            // Simulating form submission
+            console.log('Form submitted:', {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            });
+
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            form.reset();
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        }
+
+        // Booking Submission
+        function submitBooking(event) {
+            event.preventDefault();
+            
+            console.log('Booking submitted:', {
+                service: document.getElementById('bookingService').value,
+                name: document.getElementById('bookingName').value,
+                phone: document.getElementById('bookingPhone').value,
+                date: document.getElementById('bookingDate').value,
+                time: document.getElementById('bookingTime').value,
+                branch: document.getElementById('bookingBranch').value
+            });
+
+            // Show success message
+            document.getElementById('bookingSuccess').style.display = 'block';
+            
+            // Hide success message after 3 seconds and close modal
+            setTimeout(() => {
+                closeBookingModal();
+            }, 3000);
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
